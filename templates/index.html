@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Index - Depresyon Eğilim Testi</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{{ url_for('static', filename='img/favicon.png') }}" rel="icon">
+  <link href="{{ url_for('static', filename='img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+  <!-- Vendor CSS Files -->
+  <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/aos/aos.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <style>
+    .form-container {
+      background-color: #f8f9fa;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      margin: 30px auto;
+    }
+
+    .form-container h2 {
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+      color: #333;
+    }
+
+    .form-container label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    .form-container select, .form-container input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 4px;
+      border: 1px solid #ced4da;
+    }
+
+    .form-container button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .form-container button:hover {
+      background-color: #0056b3;
+    }
+
+    .form-container p {
+      font-size: 1rem;
+      color: #333;
+    }
+  </style>
+
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="">
+        <h1 class="sitename">Depresyon Eğilim Testi</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <a class="btn-getstarted" href="#form-section">TESTE BAŞLAYALIM</a>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section">
+      <div class="hero-bg">
+        <img src="{{ url_for('static', filename='img/hero-bg-light.webp') }}" alt="">
+      </div>
+      <div class="container text-center">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <h1 data-aos="fade-up">Depresyon Eğilim Testine <span>Hoş Geldiniz...</span></h1><br>
+          <p data-aos="fade-up" data-aos-delay="100">Belirli sorulara yanıt vererek depresyon eğiliminiz hakkında bilgi sahibi olabilirsiniz.<br></p>
+          <p data-aos="fade-up" data-aos-delay="100">Unutmayın ki bu yalnızca eğilim testidir. Sonuçlar sadece fikir sahibi olmanız içindir ve kesin yargı içermez. Eğer ciddi bir probleminiz olduğunu düşünüyorsanız lütfen destek almaktan çekinmeyiniz.<br></p>
+
+          <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
+            <a href="#form-section" class="btn-get-started">TESTE BAŞLAYALIM</a>
+            <a href="https://www.youtube.com/watch?v=spaRLpCUpl4" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Nasıl Çalışır?</span></a>
+          </div>
+          <img src="{{ url_for('static', filename='img/background.png') }}" class="img-fluid hero-img" alt="" data-aos="zoom-out" data-aos-delay="300">
+        </div>
+      </div>
+
+    </section><!-- /Hero Section -->
+
+    <!-- Form Section -->
+    <section id="form-section" class="form-section section">
+      <div class="container">
+        <div class="form-container">
+          <h2>Depresyon Eğilim Testi</h2>
+          <form action="/predict" method="post">
+            <label for="gender">Cinsiyetiniz nedir?:</label>
+            <select id="gender" name="1.Gender">
+              <option value="" selected disabled hidden>Seçiniz</option>
+              <option value="0">Kadın</option>
+              <option value="1">Erkek</option>
+            </select>
+            <label for="age">Kaç yaşındasınız?:</label>
+            <input type="number" id="age" name="4.Age" min="20" max="49" placeholder="Seçiniz">
+
+            <label for="job">İş durumunuz nedir?:</label>
+            <select id="job" name="3. job">
+              <option value="" selected disabled hidden>Seçiniz</option>
+              <option value="0">İşsiz</option>
+              <option value="1">Öğrenci</option>
+              <option value="2">Çalışan</option>
+              <option value="3">Yönetici</option>
+              <option value="4">Üst Yönetici</option>
+              <option value="5">Emekli</option>
+            </select>
+
+            <label for="level">Çalışma hayatınızdaki statünüz nedir?:</label>
+            <select id="level" name="2.level">
+              <option value="" selected disabled hidden>Seçiniz</option>
+              <option value="0">Başlangıç</option>
+              <option value="1">Orta</option>
+              <option value="2">İleri</option>
+              <option value="3">Uzman</option>
+              <option value="4">Lider</option>
+            </select>
+
+            <label for="married">Evlilik durumunuz nedir?:</label>
+            <select id="married" name="5. marrid">
+              <option value="" selected disabled hidden>Seçiniz</option>
+              <option value="0">Bekar</option>
+              <option value="1">Evli</option>
+              <option value="2">Dul</option>
+              <option value="3">Boşanmış</option>
+            </select>
+
+            <label for="child">Kaç çocuk sahibisiniz?:</label>
+            <input type="number" id="child" name="6. child" min="0" max="3" placeholder="Seçiniz">
+
+            <label for="sport">Spor yapma sıklığınız nedir?:</label>
+            <select id="sport" name="7.sport">
+              <option value="" selected disabled hidden>Seçiniz</option>
+              <option value="0">Yapmıyor</option>
+              <option value="1">Ara sıra</option>
+              <option value="2">Düzenli</option>
+            </select>
+
+            <label for="music">Ne sıklıkla müzik dinlersiniz?:</label>
+            <select id="music" name="8.music">
+              <option value="" selected disabled hidden>Seçiniz</option>
+              <option value="0">Hiç dinlemiyor</option>
+              <option value="1">Ara sıra dinliyor</option>
+              <option value="2">Sık sık dinliyor</option>
+            </select>
+
+            <label for="faith">Dini inancınız nedir?:</label>
+            <select id="faith" name="9.Faith">
+              <option value="" selected disabled hidden>Seçiniz</option>
+              <option value="0">İnançsız</option>
+              <option value="1">Düşük inanç</option>
+              <option value="2">Yüksek inanç</option>
+            </select>
+
+            <label for="travel">Ne sıklıkla seyahate çıkıyorsunuz?:</label>
+            <select id="travel" name="10.Travel">
+              <option value="" selected disabled hidden>Seçiniz</option>
+              <option value="0">Hiç seyahat etmiyor</option>
+              <option value="1">Ara sıra seyahat ediyor</option>
+              <option value="2">Sık sık seyahat ediyor</option>
+            </select>
+
+            <label for="mali">Mali durumunuz nedir?:</label>
+            <select id="mali" name="11.mali">
+              <option value="" selected disabled hidden>Seçiniz</option>
+              <option value="0">Kötü</option>
+              <option value="1">Orta</option>
+              <option value="2">İyi</option>
+            </select>
+
+            <button type="submit">Tahmin Et!</button>
+
+{% if prediction_text %}
+<div class="result-container">
+    <h3>Depresyon Eğilimi Sonucu</h3>
+    <div class="result {{ prediction_text }}">
+        <h4>
+            {% if prediction_text == 'low' %}
+                Düşük Depresyon Eğilimi
+            {% elif prediction_text == 'medium' %}
+                Orta Düzey Depresyon Eğilimi
+            {% elif prediction_text == 'high' %}
+                Yüksek Depresyon Eğilimi
+            {% endif %}
+        </h4>
+        <p>
+            {% if prediction_text == 'low' %}
+                Genel olarak iyi bir psikolojik durumda olduğunuz görünüyor. Ancak, herhangi bir endişeniz varsa bir uzmana danışmaktan çekinmeyin.
+            {% elif prediction_text == 'medium' %}
+                Bazı depresif belirtiler gösteriyor olabilirsiniz. Bir ruh sağlığı uzmanıyla görüşmek faydalı olabilir.
+            {% elif prediction_text == 'high' %}
+                Ciddi depresif belirtiler gösteriyor olabilirsiniz. Lütfen en kısa zamanda bir ruh sağlığı uzmanına başvurun.
+            {% endif %}
+        </p>
+    </div>
+    <div class="probabilities">
+        <h5>Eğilim Olasılıkları:</h5>
+        <ul>
+            <li>Düşük: {{ probabilities['low'] }}</li>
+            <li>Orta: {{ probabilities['medium'] }}</li>
+            <li>Yüksek: {{ probabilities['high'] }}</li>
+        </ul>
+    </div>
+    <p class="disclaimer">Not: Bu test sadece bir eğilim göstergesidir ve kesin bir tanı koyamaz. Profesyonel yardım almaktan çekinmeyin.</p>
+</div>
+{% endif %}
+
+
+          </form>
+
+          {% if prediction_text %}
+            <p>{{ prediction_text }}</p>
+          {% endif %}
+        </div>
+      </div>
+    </section><!-- /Form Section -->
+
+    <!-- Scroll Top -->
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Preloader -->
+    <div id="preloader"></div>
+
+    <!-- Vendor JS Files -->
+    <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/php-email-form/validate.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/aos/aos.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/glightbox/js/glightbox.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.js') }}"></script>
+
+    <!-- Main JS File -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+
+</html>
